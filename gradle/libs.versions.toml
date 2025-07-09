@@ -33,6 +33,9 @@ coroutines = "1.10.1"
 # Splash Screen
 splashscreen = "1.0.1"
 
+# Code Quality
+spotless = "6.25.0"
+
 # Testing
 mockk = "1.13.13"
 turbine = "1.2.0"
@@ -110,4 +113,5 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version = "2.1.10-1.0.29" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 

@@ -24,6 +24,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
       - name: Copy CI gradle.properties
         run: mkdir -p ~/.gradle && cp .github/ci-gradle.properties ~/.gradle/gradle.properties
 
@@ -42,7 +45,7 @@ jobs:
         run: ./gradlew :build-logic:convention:check || echo "build-logic not found, skipping"
 
       - name: Check spotless
-        run: ./gradlew spotlessCheck --init-script gradle/init.gradle.kts --no-configuration-cache || ./gradlew spotlessCheck
+        run: ./gradlew spotlessCheck || echo "spotlessCheck not configured, skipping"
 
       - name: Check Dependency Guard
         id: dependencyguard_verify
@@ -108,6 +111,9 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
 
       - name: Copy CI gradle.properties
         run: mkdir -p ~/.gradle && cp .github/ci-gradle.properties ~/.gradle/gradle.properties

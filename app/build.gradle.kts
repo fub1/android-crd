@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.spotless)
 }
 
 android {
@@ -133,4 +134,24 @@ dependencies {
     
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+}
+
+// Spotless configuration for code formatting
+spotless {
+    kotlin {
+        target("**/*.kt")
+        ktlint().editorConfigOverride(mapOf(
+            "indent_size" to "4",
+            "continuation_indent_size" to "4"
+        ))
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+    
+    kotlinGradle {
+        target("**/*.gradle.kts")
+        ktlint()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
 }
